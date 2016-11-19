@@ -34,12 +34,10 @@ public class PlayerController : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+		animator = GetComponent<Animator> ();
 
         score = 0;
         sprite.flipX = false;                       //player should start facing right
-
-
-
     }
 
     void Update()
@@ -71,15 +69,34 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        float moveHorizontal = Input.GetAxis("Horizontal");
+		float moveHorizontal = Input.GetAxis("Horizontal");
         Vector2 movement = new Vector2((moveHorizontal * movementSpeed), rb2D.velocity.y);
+
+		//character facing right
+		if (movement.x >= 0)
+		{
+			sprite.flipX = false;
+		}
+		else //character facing left
+		{
+			sprite.flipX = true;
+		}
+		//only play walk animation if arrow is being pressed and character is on ground
+		if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.LeftArrow)) && grounded)
+			animator.SetTrigger ("walk");
         
         rb2D.velocity = movement;
-        
+
+		//If the dude is falling
+		if (movement.y < 0) {
+			animator.SetTrigger ("floatDown");
+		}
         if (jump)
         {
             rb2D.AddForce(new Vector2(0f, jumpSpeed));
+			animator.SetTrigger ("jumpIdle");
+			animator.SetTrigger ("floatDown");
+			animator.SetTrigger ("landIdle");
             jump = false;
         }
         if (walljumpL)
