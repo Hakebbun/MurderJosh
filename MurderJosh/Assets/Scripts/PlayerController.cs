@@ -74,16 +74,16 @@ public class PlayerController : MonoBehaviour
             rb2D.AddForce(new Vector2(0f, jumpSpeed));
             jump = false;
         }
-        if (walljumpL)
-        {
-            rb2D.AddForce(new Vector2(-jumpSpeed, jumpSpeed));
-            jump = false;
-        }
-        if (walljumpL)
-        {
-            rb2D.AddForce(new Vector2(-jumpSpeed, jumpSpeed));
-            jump = false;
-        }
+        //if (walljumpL)
+        //{
+            //rb2D.AddForce(new Vector2((2000), jumpSpeed));
+            //jump = false;
+        //}
+        //if (walljumpL)
+        //{
+            //rb2D.AddForce(new Vector2(-jumpSpeed, jumpSpeed));
+            //jump = false;
+        //}
 
     }
 
