@@ -40,8 +40,10 @@ public class bulletController : MonoBehaviour {
 
 			// assign the reflected velocity back to the rigidbody
 			rb.velocity = reflectedVelocity;
+
 			// rotate the object by the same ammount we changed its velocity
 			Quaternion rotation = Quaternion.FromToRotation (oldVelocity, reflectedVelocity);
+
 			transform.rotation = rotation * transform.rotation;
 
 		}

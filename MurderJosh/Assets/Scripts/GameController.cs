@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	public Text scoreMultiplierText;
 	public Text gameOverText;
 	public Text restartText;
+	public Text reloadCounter;
 	public static GameController instance = null;
 
 
@@ -84,6 +85,12 @@ public class GameController : MonoBehaviour {
 	public void GameOver(){
 		gameOverText.text = "Game Over";
 		gameOver = true;
+	}
+
+	// Updates the reload timer
+	public void updateReload(float count){
+		Debug.Log ("reload: " + count);
+		reloadCounter.text = "Reload in: " + count.ToString("0");
 	}
 
 }
