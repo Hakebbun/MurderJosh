@@ -30,14 +30,13 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		gameOver = false;
 		restart = false;
+		score = 0;
+		scoreMultiplier = 0;
 
 		scoreText.text = "Score: " + score;
 		scoreMultiplierText.text = "Multiplier: " + scoreMultiplier;
 		gameOverText.text = "";
 		restartText.text = "";
-
-		score = 0;
-		scoreMultiplier = 1;
 
 		InvokeRepeating("UpdateEverySecond", 0f, 1.0f);
 	}
@@ -56,6 +55,7 @@ public class GameController : MonoBehaviour {
 				SceneManager.LoadScene (scene, LoadSceneMode.Single);
 			}
 		}
+		//TODO: This is just for testing. Get rid of this
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			GameOver ();
 		}
@@ -66,7 +66,8 @@ public class GameController : MonoBehaviour {
 	/// Meant for updating the score
 	/// </summary>
 	void UpdateEverySecond(){
-		score = score + scoreMultiplier;
+		if (!gameOver)
+			score = score + scoreMultiplier;
 	}
 
 	/// <summary>
@@ -83,6 +84,7 @@ public class GameController : MonoBehaviour {
 	void GameOver(){
 		gameOverText.text = "Game Over";
 		gameOver = true;
+		//TODO: disable the player script to prevent them from doing anything when the game is over
 	}
 
 }
