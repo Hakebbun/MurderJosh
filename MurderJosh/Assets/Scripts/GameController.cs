@@ -10,7 +10,6 @@ public class GameController : MonoBehaviour {
 	private bool gameOver;											
 	private bool restart;
 	public PlayerController player;
-
 	public testFireController tfc;
 
 	public Text scoreText;
@@ -51,16 +50,13 @@ public class GameController : MonoBehaviour {
 			restartText.text = "Press 'R' to Restart";
 			restart = true;
 			player.enabled = false;
+			tfc.enabled = false;
 		}
 		if (restart) {
 			if (Input.GetKeyDown (KeyCode.R)) {
 				int scene = SceneManager.GetActiveScene ().buildIndex;
 				SceneManager.LoadScene (scene, LoadSceneMode.Single);
 			}
-		}
-		//TODO: This is just for testing. Get rid of this
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			GameOver ();
 		}
 	}
 
@@ -84,7 +80,7 @@ public class GameController : MonoBehaviour {
 	/// <summary>
 	/// Games the over.
 	/// </summary>
-	void GameOver(){
+	public void GameOver(){
 		gameOverText.text = "Game Over";
 		gameOver = true;
 	}

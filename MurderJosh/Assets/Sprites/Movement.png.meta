@@ -1,0 +1,731 @@
+fileFormatVersion: 2
+guid: 9d6f10ff7037a1e44b4bb368368ae823
+timeCreated: 1479551852
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Movement_0
+    21300002: Movement_1
+    21300004: Movement_2
+    21300006: Movement_3
+    21300008: Movement_4
+    21300010: Movement_5
+    21300012: Movement_6
+    21300014: Movement_7
+    21300016: Movement_8
+    21300018: Movement_9
+    21300020: Movement_10
+    21300022: Movement_11
+    21300024: Movement_12
+    21300026: Movement_13
+    21300028: Movement_14
+    21300030: Movement_15
+    21300032: Movement_16
+    21300034: Movement_17
+    21300036: Movement_18
+    21300038: Movement_19
+    21300040: Movement_20
+    21300042: Movement_21
+    21300044: Movement_22
+    21300046: Movement_23
+    21300048: Movement_24
+    21300050: Movement_25
+    21300052: Movement_26
+    21300054: Movement_27
+    21300056: Movement_28
+    21300058: Movement_29
+    21300060: Movement_30
+    21300062: Movement_31
+    21300064: Movement_32
+    21300066: Movement_33
+    21300068: Movement_34
+    21300070: Movement_35
+    21300072: Movement_36
+    21300074: Movement_37
+    21300076: Movement_38
+    21300078: Movement_39
+    21300080: Movement_40
+    21300082: Movement_41
+    21300084: Movement_42
+    21300086: Movement_43
+    21300088: Movement_44
+    21300090: Movement_45
+    21300092: Movement_46
+    21300094: Movement_47
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Movement_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 5450
+        width: 379
+        height: 438
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_1
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 5441
+        width: 376
+        height: 428
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_2
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 5447
+        width: 377
+        height: 402
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_3
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 5453
+        width: 381
+        height: 425
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_4
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 4978
+        width: 379
+        height: 440
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_5
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 4975
+        width: 376
+        height: 431
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_6
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 4973
+        width: 376
+        height: 433
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_7
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 4975
+        width: 377
+        height: 438
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_8
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 4446
+        width: 376
+        height: 446
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_9
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 4449
+        width: 379
+        height: 449
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_10
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 4446
+        width: 388
+        height: 443
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_11
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 4440
+        width: 380
+        height: 446
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_12
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 3940
+        width: 379
+        height: 383
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_13
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 3937
+        width: 376
+        height: 408
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_14
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 3929
+        width: 376
+        height: 442
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_15
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 3909
+        width: 377
+        height: 474
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_16
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 3451
+        width: 376
+        height: 380
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_17
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 3446
+        width: 377
+        height: 408
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_18
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 3437
+        width: 377
+        height: 446
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_19
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 3414
+        width: 374
+        height: 480
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_20
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 2937
+        width: 376
+        height: 463
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_21
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 2923
+        width: 377
+        height: 474
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_22
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 2917
+        width: 376
+        height: 474
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_23
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 2917
+        width: 377
+        height: 471
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_24
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 2447
+        width: 376
+        height: 458
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_25
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 2428
+        width: 374
+        height: 480
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_26
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 2408
+        width: 370
+        height: 500
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_27
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 2416
+        width: 377
+        height: 480
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_28
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1974
+        width: 393
+        height: 451
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_29
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 1968
+        width: 382
+        height: 425
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_30
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1959
+        width: 377
+        height: 417
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_31
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 1951
+        width: 380
+        height: 448
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_32
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1482
+        width: 393
+        height: 451
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_33
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 1473
+        width: 388
+        height: 432
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_34
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 1436
+        width: 384
+        height: 451
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_35
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 1471
+        width: 388
+        height: 438
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_36
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 956
+        width: 376
+        height: 474
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_37
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 968
+        width: 376
+        height: 442
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_38
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 988
+        width: 378
+        height: 408
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_39
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 996
+        width: 377
+        height: 382
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_40
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 493
+        width: 385
+        height: 443
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_41
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 484
+        width: 396
+        height: 380
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_42
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 482
+        width: 385
+        height: 408
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_43
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 479
+        width: 377
+        height: 434
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 386
+        height: 464
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_45
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 13
+        width: 431
+        height: 379
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_46
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 13
+        width: 391
+        height: 402
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Movement_47
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 10
+        width: 382
+        height: 431
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
