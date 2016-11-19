@@ -51,16 +51,16 @@ public class PlayerController : MonoBehaviour
 		transform.rotation = Quaternion.Euler(lockPos, lockPos, lockPos);
 
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) && grounded))
+        if ((Input.GetButtonDown("Jump") && grounded))
             jump = true;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && wallR)
+        if (Input.GetButtonDown("Jump") && wallR)
         {
             Debug.Log("WALL Right");
             walljumpR = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && wallL)
+        if (Input.GetButtonDown("Jump") && wallL)
         {
             Debug.Log("WALL Left");
             walljumpL = true;
@@ -84,14 +84,16 @@ public class PlayerController : MonoBehaviour
         {
             movement = new Vector2(0, 0);
             rb2D.velocity = movement;
-            rb2D.AddForce(new Vector2(jumpSpeed, jumpSpeed));
+            //rb2D.AddForce(new Vector2((jumpSpeed * 2), jumpSpeed));
+            rb2D.AddForce(new Vector2(0, jumpSpeed));
             walljumpL = false;
         }
         if (walljumpR)
         {
             movement = new Vector2(0, 0);
             rb2D.velocity = movement;
-            rb2D.AddForce(new Vector2(-jumpSpeed, jumpSpeed));
+            //rb2D.AddForce(new Vector2((-jumpSpeed * 2), jumpSpeed));
+            rb2D.AddForce(new Vector2(0, jumpSpeed));
             walljumpR = false;
         }
 
