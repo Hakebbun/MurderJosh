@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-		animator = GetComponent<Animator> ();
 
         score = 0;
         sprite.flipX = false;                       //player should start facing right
@@ -43,7 +42,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Cast line down to see if player is touching the ground
+        bool groundedTemp = grounded;
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        if(!groundedTemp && grounded && animator.GetCurrentAnimatorStateInfo(0).IsName("FloatDown"))
+        {
+            Debug.Log("Land Idle");
+            animator.SetTrigger("landIdle");
+
+        }
+
+
         wallL = Physics2D.Linecast(transform.position, wallCheckL.position, 1 << LayerMask.NameToLayer("Ground"));
         wallR = Physics2D.Linecast(transform.position, wallCheckR.position, 1 << LayerMask.NameToLayer("Ground"));
 
@@ -51,19 +59,29 @@ public class PlayerController : MonoBehaviour
 		transform.rotation = Quaternion.Euler(lockPos, lockPos, lockPos);
 
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow) && grounded))
-            jump = true;
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) && wallR)
+        if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("WALL Right");
-            walljumpR = true;
-        }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && wallL)
-        {
-            Debug.Log("WALL Left");
-            walljumpL = true;
+            if (grounded)
+            {
+                jump = true;
+                animator.SetTrigger("jumpIdle");
+
+            }
+            else if (wallR)
+            {
+                Debug.Log("WALL Right");
+                walljumpR = true;
+                animator.SetTrigger("jumpIdle");
+
+            }
+            else if (wallL)
+            {
+                Debug.Log("WALL Left");
+                walljumpL = true;
+                animator.SetTrigger("jumpIdle");
+
+            }
         }
     }
 
@@ -71,42 +89,48 @@ public class PlayerController : MonoBehaviour
     {
 		float moveHorizontal = Input.GetAxis("Horizontal");
         Vector2 movement = new Vector2((moveHorizontal * movementSpeed), rb2D.velocity.y);
+        rb2D.velocity = movement;
 
-		//character facing right
-		if (movement.x >= 0)
+        Vector2 realMovement = rb2D.transform.InverseTransformDirection(rb2D.velocity);
+
+        //character facing right
+        if (movement.x > 0)
 		{
 			sprite.flipX = false;
 		}
-		else //character facing left
-		{
+		else if (movement.x < 0)//character facing left
+        {
 			sprite.flipX = true;
 		}
+        else if (grounded && animator.GetCurrentAnimatorStateInfo(0).IsName("Land") || animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+        {
+            animator.SetTrigger("stopWalking");
+        }
+
 		//only play walk animation if arrow is being pressed and character is on ground
-		if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.LeftArrow)) && grounded)
+		if (moveHorizontal != 0 && grounded && !jump)
 			animator.SetTrigger ("walk");
         
-        rb2D.velocity = movement;
+        
 
 		//If the dude is falling
-		if (movement.y < 0) {
+		if (!grounded && realMovement.y < 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("FloatUp"))
+        {
 			animator.SetTrigger ("floatDown");
 		}
-        if (jump)
+        else if (grounded && jump)
         {
             rb2D.AddForce(new Vector2(0f, jumpSpeed));
-			animator.SetTrigger ("jumpIdle");
-			animator.SetTrigger ("floatDown");
-			animator.SetTrigger ("landIdle");
             jump = false;
         }
-        if (walljumpL)
+        else if (walljumpL)
         {
             movement = new Vector2(0, 0);
             rb2D.velocity = movement;
             rb2D.AddForce(new Vector2(jumpSpeed, jumpSpeed));
             walljumpL = false;
         }
-        if (walljumpR)
+        else if (walljumpR)
         {
             movement = new Vector2(0, 0);
             rb2D.velocity = movement;
