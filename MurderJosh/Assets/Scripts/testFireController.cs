@@ -10,12 +10,15 @@ public class testFireController : MonoBehaviour {
 	public GameObject gun;
     public SpriteRenderer gunSprite;
 
+	public bool slow;
+
 
     public bulletController bullet;
 	float xVel, yVel;
 	// Use this for initialization
 	void Start () {
         gunSprite = gun.GetComponent<SpriteRenderer>();
+		slow = false;
     }
 	
 	// Update is called once per frame
@@ -79,8 +82,10 @@ public class testFireController : MonoBehaviour {
 
 		// Button check to do slowdown
 		if(Input.GetButtonDown("SlowDown")){
+			slow = true;
 			slowDown();
 		}else if(Input.GetButtonUp("SlowDown")){
+			slow = false;
 			endSlowDown();
 		}
 

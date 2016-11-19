@@ -65,7 +65,8 @@ public class GameController : MonoBehaviour {
 	/// Meant for updating the score
 	/// </summary>
 	void UpdateEverySecond(){
-		if (!gameOver)
+		//if the game isn't over and the bullets aren't travelling slowly
+		if (!gameOver && !tfc.slow)
 			score = score + scoreMultiplier;
 	}
 
