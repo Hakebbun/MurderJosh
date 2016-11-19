@@ -7,6 +7,7 @@ public class testFireController : MonoBehaviour {
 	public List<bulletController> bullets = new List<bulletController>();
 	public GameObject player;
 	public GameObject arm;
+	public GameObject gun;
 
 
 	public bulletController bullet;
@@ -63,9 +64,9 @@ public class testFireController : MonoBehaviour {
 		 */
 
 		// Don't fire if we're not aiming
-		if (Input.GetButtonDown("CustomFire") && !(yVel == 0 && xVel == 0)) {
+		if (Input.GetButtonDown("CustomFire") && !(yVel == 0 && xVel == 0) && !(Input.GetButton("SlowDown"))) {
 			// Instantiate a new bullet
-			bulletController curGO = (bulletController)Instantiate (bullet, player.GetComponent<Rigidbody2D>().position, Quaternion.identity);
+			bulletController curGO = (bulletController)Instantiate (bullet, gun.transform.position, Quaternion.identity);
 
 			// Give it directional velocity
 			curGO.GetComponent<Rigidbody2D> ().velocity = new Vector2 (xVel, yVel);
@@ -122,12 +123,13 @@ public class testFireController : MonoBehaviour {
 
 		// straight down
 		if (xVel == 0 && yVel == -1) {
+			Debug.Log ("aim down");
 			arm.transform.rotation = Quaternion.Euler (0, 0, 270);
 
 		}
 
 		// down and forward
-		if (xVel == 0 && yVel == -1) {
+		if (xVel == 1 && yVel == -1) {
 			arm.transform.rotation = Quaternion.Euler (0, 0, 315);
 
 		}
