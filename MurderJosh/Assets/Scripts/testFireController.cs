@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class testFireController : MonoBehaviour {
+	public float bulletsInPlay = 0;
+
+
 	public bulletController bullet;
 	float xVel, yVel;
 	// Use this for initialization
@@ -56,7 +59,7 @@ public class testFireController : MonoBehaviour {
 			bulletController curGO = (bulletController)Instantiate (bullet, new Vector3 (0, 0, -0.1f), Quaternion.identity);
 			curGO.GetComponent<Rigidbody2D> ().velocity = new Vector2 (xVel, yVel);
 			Debug.Log ("Cur Dir =" + xVel + "," + yVel);
-
+			bulletsInPlay += 1;
 		}
 	}
 }
