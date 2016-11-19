@@ -8,14 +8,15 @@ public class testFireController : MonoBehaviour {
 	public GameObject player;
 	public GameObject arm;
 	public GameObject gun;
+    public SpriteRenderer gunSprite;
 
 
-	public bulletController bullet;
+    public bulletController bullet;
 	float xVel, yVel;
 	// Use this for initialization
 	void Start () {
-	
-	}
+        gunSprite = gun.GetComponent<SpriteRenderer>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -86,6 +87,15 @@ public class testFireController : MonoBehaviour {
 
 		// angle check for rotating gun
 
+        if(xVel < 0)
+        {
+            gunSprite.flipY = true;
+        }
+        else
+        {
+            gunSprite.flipY = false;
+        }
+
 		// straight
 		if (xVel == 1 && yVel == 0) {
 			arm.transform.rotation = Quaternion.Euler (0, 0, 0);
@@ -106,7 +116,6 @@ public class testFireController : MonoBehaviour {
 		// up and back
 		if (xVel == -1 && yVel == 1) {
 			arm.transform.rotation = Quaternion.Euler (0, 0, 135);
-
 		}
 
 		// straight back
