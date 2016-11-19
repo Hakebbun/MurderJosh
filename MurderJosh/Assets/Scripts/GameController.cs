@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
 
 	private float score;
 	private float scoreMultiplier;
-	public bool gameOver;											//TODO: make this private
+	private bool gameOver;											//TODO: make this private
 	private bool restart;
 
 	public testFireController tfc;
@@ -24,17 +24,21 @@ public class GameController : MonoBehaviour {
 			instance = this;
 		else if (instance != this)
 			Destroy(gameObject);
-
-		DontDestroyOnLoad(gameObject);
 	}
 
 	// Use this for initialization
 	void Start () {
+		gameOver = false;
+		restart = false;
+
 		scoreText.text = "Score: " + score;
 		scoreMultiplierText.text = "Multiplier: " + scoreMultiplier;
 		gameOverText.text = "";
 		restartText.text = "";
+
 		score = 0;
+		scoreMultiplier = 1;
+
 		InvokeRepeating("UpdateEverySecond", 0f, 1.0f);
 	}
 
@@ -51,6 +55,9 @@ public class GameController : MonoBehaviour {
 				int scene = SceneManager.GetActiveScene ().buildIndex;
 				SceneManager.LoadScene (scene, LoadSceneMode.Single);
 			}
+		}
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			GameOver ();
 		}
 	}
 
