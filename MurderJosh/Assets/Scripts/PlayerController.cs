@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-
+	private float lockPos = 0;
     public float movementSpeed;                         //Speed at which player should travel
     public float jumpSpeed;                             //Speed at which player should jump
     public float maxSpeed = 5f;                         //max speed player can move
@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
         score = 0;
         sprite.flipX = false;                       //player should start facing right
 
+
+
     }
 
     void Update()
@@ -44,6 +46,10 @@ public class PlayerController : MonoBehaviour
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         wallL = Physics2D.Linecast(transform.position, wallCheckL.position, 1 << LayerMask.NameToLayer("Ground"));
         wallR = Physics2D.Linecast(transform.position, wallCheckR.position, 1 << LayerMask.NameToLayer("Ground"));
+
+		// Lock rotation
+		transform.rotation = Quaternion.Euler(lockPos, lockPos, lockPos);
+
 
         if ((Input.GetKeyDown(KeyCode.UpArrow) && grounded))
             jump = true;
