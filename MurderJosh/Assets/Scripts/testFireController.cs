@@ -10,6 +10,8 @@ public class testFireController : MonoBehaviour {
 	public GameObject gun;
     public SpriteRenderer gunSprite;
 	public PlayerController playerController;
+	public GameController gameController;
+	public float reload = 0f;
 
 	public bool slow;
 
@@ -24,6 +26,10 @@ public class testFireController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// count down reload timer
+		reload -= Time.deltaTime;
+
+		gameController.updateReload (reload);
 
 
 		/*
@@ -75,7 +81,7 @@ public class testFireController : MonoBehaviour {
 		 */
 
 		// Don't fire if we're not aiming
-		if (Input.GetButtonDown("CustomFire") && !(yVel == 0 && xVel == 0) && !(Input.GetButton("SlowDown"))) {
+		if (Input.GetButtonDown("CustomFire") && !(yVel == 0 && xVel == 0) && !(Input.GetButton("SlowDown")) && reload < 0) {
 			// Instantiate a new bullet
 			bulletController curGO = (bulletController)Instantiate (bullet, gun.transform.position, Quaternion.identity);
 
@@ -85,6 +91,10 @@ public class testFireController : MonoBehaviour {
 			//update bullets in play and list of bullets
 			bulletsInPlay += 1;
 			bullets.Add (curGO);
+
+			reload = 5;
+
+
 		}
 
 		// Button check to do slowdown
