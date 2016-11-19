@@ -5,17 +5,17 @@ public class bulletController : MonoBehaviour {
 	public Rigidbody2D rb;
 	private Vector2 oldVelocity;
 
-	public float fireSpeed = 8f;
+	public float fireSpeed = 16f;
 
 	// Use this for initialization
 	void Start () {
-		// set our laser on its merry way. no need to update transform manually
-		// Initialise with a random vector, normalize it then multiply by bullet speed
-		Vector2 initVector = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f)) ;
-		initVector.Normalize();
-		initVector = initVector * fireSpeed;
+//		// set our laser on its merry way. no need to update transform manually
+//		// Initialise with a random vector, normalize it then multiply by bullet speed
+//		Vector2 initVector = new Vector2(Random.Range(-1f,1f), Random.Range(-1f,1f)) ;
+//		initVector.Normalize();
+//		initVector = initVector;
 
-		rb.velocity = initVector;
+		rb.velocity = rb.velocity  * fireSpeed;
 
 		// freeze the rotation so it doesnt go spinning after a collision
 		rb.freezeRotation = true;
@@ -37,10 +37,6 @@ public class bulletController : MonoBehaviour {
 
 	// when a collision happens
 	void OnCollisionEnter2D (Collision2D collision) {
-
-
-			Debug.Log ("collided with NON bullet");
-
 
 			// get the point of contact
 			ContactPoint2D contact = collision.contacts [0];
