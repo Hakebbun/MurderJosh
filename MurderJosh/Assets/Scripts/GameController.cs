@@ -10,9 +10,10 @@ public class GameController : MonoBehaviour {
 	public bool gameOver;											//TODO: make this private
 	private bool restart;
 
+	public testFireController tfc;
 
-	public int numberOfBullets;										//TODO: This is just for testing purposes. For the actual game get this number for real
 	public Text scoreText;
+	public Text scoreMultiplierText;
 	public Text gameOverText;
 	public Text restartText;
 	public static GameController instance = null;
@@ -30,6 +31,7 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		scoreText.text = "Score: " + score;
+		scoreMultiplierText.text = "Multiplier: " + scoreMultiplier;
 		gameOverText.text = "";
 		restartText.text = "";
 		score = 0;
@@ -38,8 +40,8 @@ public class GameController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		scoreMultiplier = Mathf.Pow (numberOfBullets, 2);
-		Debug.Log ("Score Multiplier: " + scoreMultiplier);
+		updateScoreText ();
+		scoreMultiplier = Mathf.Pow (tfc.bulletsInPlay, 2);
 		if (gameOver) {
 			restartText.text = "Press 'R' to Restart";
 			restart = true;
@@ -58,7 +60,6 @@ public class GameController : MonoBehaviour {
 	/// </summary>
 	void UpdateEverySecond(){
 		score = score + scoreMultiplier;
-		updateScoreText ();
 	}
 
 	/// <summary>
@@ -66,6 +67,7 @@ public class GameController : MonoBehaviour {
 	/// </summary>
 	void updateScoreText(){
 		scoreText.text = "Score: " + score;
+		scoreMultiplierText.text = "Multiplier: " + scoreMultiplier;
 	}
 
 	/// <summary>
