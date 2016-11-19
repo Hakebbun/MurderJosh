@@ -7,8 +7,9 @@ public class GameController : MonoBehaviour {
 
 	private float score;
 	private float scoreMultiplier;
-	private bool gameOver;											//TODO: make this private
+	private bool gameOver;											
 	private bool restart;
+	public PlayerController player;
 
 	public testFireController tfc;
 
@@ -17,6 +18,7 @@ public class GameController : MonoBehaviour {
 	public Text gameOverText;
 	public Text restartText;
 	public static GameController instance = null;
+
 
 	// Use this for initialization
 	void Awake () {
@@ -48,6 +50,7 @@ public class GameController : MonoBehaviour {
 		if (gameOver) {
 			restartText.text = "Press 'R' to Restart";
 			restart = true;
+			player.enabled = false;
 		}
 		if (restart) {
 			if (Input.GetKeyDown (KeyCode.R)) {
@@ -84,7 +87,6 @@ public class GameController : MonoBehaviour {
 	void GameOver(){
 		gameOverText.text = "Game Over";
 		gameOver = true;
-		//TODO: disable the player script to prevent them from doing anything when the game is over
 	}
 
 }
