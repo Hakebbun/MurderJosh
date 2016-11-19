@@ -31,34 +31,40 @@ public class testFireController : MonoBehaviour {
 		*/
 
 
-		if(Input.GetButton("AimUp")){
+		//if(Input.GetButton("AimUp")){
+		if(Input.GetAxis("Vertical") < 0)
+        {
 			arm.SetActive (true);
-
 			yVel = 1f;
 		}
 
-		if(Input.GetButton("AimRight") && !playerController.wallR){
+		if((Input.GetAxis("AimHorizontal") > 0) && !playerController.wallR){
 			arm.SetActive (true);
 			xVel = 1f;
 
 		}
 
-		if(Input.GetButton("AimDown")){
-			arm.SetActive (true);
+        //if(Input.GetButton("AimDown")){
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            arm.SetActive (true);
 			yVel = -1f;
 		}
-
-		if(Input.GetButton("AimLeft") && !playerController.wallL){
+        
+		//if(Input.GetButton("AimLeft") && !playerController.wallL){
+		if((Input.GetAxis("AimHorizontal") < 0) && !playerController.wallL){
 			arm.SetActive (true);
 			xVel = -1f;
 		}
-
-		if (Input.GetButtonUp ("AimUp") || Input.GetButtonUp ("AimDown")) {
+        
+		//if (Input.GetButtonUp ("AimUp") || Input.GetButtonUp ("AimDown")) {
+		if (Input.GetAxis("Vertical") == 0) {
 			yVel = 0f;
 
 		}
-
-		if (Input.GetButtonUp ("AimRight") || Input.GetButtonUp ("AimLeft")) {
+        
+		//if (Input.GetButtonUp ("AimRight") || Input.GetButtonUp ("AimLeft")) {
+		if (Input.GetAxis("AimHorizontal") == 0) {
 			xVel = 0f;
 
 		}
