@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class testFireController : MonoBehaviour {
 	public float bulletsInPlay = 0;
 	public List<bulletController> bullets = new List<bulletController>();
+	public GameObject player;
 
 
 	public bulletController bullet;
@@ -57,7 +58,7 @@ public class testFireController : MonoBehaviour {
 		// Don't fire if we're not aiming
 		if (Input.GetButtonDown("CustomFire") && !(yVel == 0 && xVel == 0)) {
 			// Instantiate a new bullet
-			bulletController curGO = (bulletController)Instantiate (bullet, new Vector3 (0, 0, -0.1f), Quaternion.identity);
+			bulletController curGO = (bulletController)Instantiate (bullet, player.GetComponent<Rigidbody2D>().position, Quaternion.identity);
 
 			// Give it directional velocity
 			curGO.GetComponent<Rigidbody2D> ().velocity = new Vector2 (xVel, yVel);
