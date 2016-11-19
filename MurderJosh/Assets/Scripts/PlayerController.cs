@@ -80,16 +80,20 @@ public class PlayerController : MonoBehaviour
             rb2D.AddForce(new Vector2(0f, jumpSpeed));
             jump = false;
         }
-        //if (walljumpL)
-        //{
-            //rb2D.AddForce(new Vector2((2000), jumpSpeed));
-            //jump = false;
-        //}
-        //if (walljumpL)
-        //{
-            //rb2D.AddForce(new Vector2(-jumpSpeed, jumpSpeed));
-            //jump = false;
-        //}
+        if (walljumpL)
+        {
+            movement = new Vector2(0, 0);
+            rb2D.velocity = movement;
+            rb2D.AddForce(new Vector2(jumpSpeed, jumpSpeed));
+            walljumpL = false;
+        }
+        if (walljumpR)
+        {
+            movement = new Vector2(0, 0);
+            rb2D.velocity = movement;
+            rb2D.AddForce(new Vector2(-jumpSpeed, jumpSpeed));
+            walljumpR = false;
+        }
 
     }
 
