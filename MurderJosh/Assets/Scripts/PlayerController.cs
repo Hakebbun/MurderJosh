@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public Transform wallCheckL;
     public Transform wallCheckR;
 
+	public GameController instance;
+
     private Animator animator;                          //Used to store reference to player's animator component
 
     private Rigidbody2D rb2D;
@@ -96,5 +98,11 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+	void OnCollisionEnter2D(Collision2D collision){
+		if (collision.collider.CompareTag ("bullet")) {
+			instance.GameOver ();
+		}
+	}
 
 }
