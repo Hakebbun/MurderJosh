@@ -3,33 +3,48 @@ using System.Collections;
 
 public class bulletController : MonoBehaviour {
 	public Rigidbody2D rb;
-	Vector3 velocity; //Our movement velocity
-	public float speed; //Speed of object
+	private Vector2 oldVelocity;
 
+	public float fireSpeed = 2f;
 
 	// Use this for initialization
 	void Start () {
-		rb.velocity = new Vector2 (1, 1);
+		// set our laser on its merry way. no need to update transform manually
+		rb.velocity = new Vector2(1,2) * fireSpeed;
+
+		Debug.Log (rb.velocity);
+
+		// freeze the rotation so it doesnt go spinning after a collision
+		rb.freezeRotation = true;
 	}
-	
+
+
+	void FixedUpdate () {
+		// because we want the velocity after physics, we put this in fixed update
+		oldVelocity = rb.velocity;
+	}
+
+
 	// Update is called once per frame
 	void Update () {
-		gameObject.transform.position += velocity * Time.deltaTime * speed; //Update our position based on our new-found velocity
+		
 	}
 
 
 
-	void OnCollisionEnter2D(Collision2D info) //When we run into something
-	{
-		Debug.Log ("it hapened");
-		//'Bounce' off surface
-		foreach(ContactPoint2D contact in info.contacts ) //Find collision point
-		{
-			//Find the BOUNCE of the object
-			velocity = 2 * ( Vector3.Dot( velocity, Vector3.Normalize( contact.normal ) ) ) * Vector3.Normalize( contact.normal ) - velocity; //Following formula  v' = 2 * (v . n) * n - v
+	// when a collision happens
+	void OnCollisionEnter2D (Collision2D collision) {
+		// get the point of contact
+		ContactPoint2D contact = collision.contacts[0];
 
-			velocity *= -1; //Had to multiply everything by -1. Don't know why, but it was all backwards.
-		}
+		// reflect our old velocity off the contact point's normal vector
+		Vector2 reflectedVelocity = Vector2.Reflect(oldVelocity, contact.normal);        
+
+		// assign the reflected velocity back to the rigidbody
+		rb.velocity = reflectedVelocity;
+		// rotate the object by the same ammount we changed its velocity
+		Quaternion rotation = Quaternion.FromToRotation(oldVelocity, reflectedVelocity);
+		transform.rotation = rotation * transform.rotation;
 	}
 
 }
