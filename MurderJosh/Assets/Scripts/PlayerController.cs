@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sprite;
     private int score;                          //How many coins player has picked up
     private bool grounded;                      //is the player on the ground?
-    private bool wallL;                      //is the player on the ground?
-    private bool wallR;                      //is the player on the ground?
+    public bool wallL;                      //is the player on the ground?
+    public bool wallR;                      //is the player on the ground?
 
     // Use this for initialization
     void Start()

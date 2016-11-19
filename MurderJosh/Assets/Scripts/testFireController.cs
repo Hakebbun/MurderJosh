@@ -9,7 +9,7 @@ public class testFireController : MonoBehaviour {
 	public GameObject arm;
 	public GameObject gun;
     public SpriteRenderer gunSprite;
-
+	public PlayerController playerController;
 
     public bulletController bullet;
 	float xVel, yVel;
@@ -33,7 +33,7 @@ public class testFireController : MonoBehaviour {
 			yVel = 1f;
 		}
 
-		if(Input.GetButton("AimRight")){
+		if(Input.GetButton("AimRight") && !playerController.wallR){
 			arm.SetActive (true);
 			xVel = 1f;
 
@@ -44,7 +44,7 @@ public class testFireController : MonoBehaviour {
 			yVel = -1f;
 		}
 
-		if(Input.GetButton("AimLeft")){
+		if(Input.GetButton("AimLeft") && !playerController.wallL){
 			arm.SetActive (true);
 			xVel = -1f;
 		}
@@ -123,26 +123,7 @@ public class testFireController : MonoBehaviour {
 			arm.transform.rotation = Quaternion.Euler (0, 0, 180);
 
 		}
-
-		// down and back
-		if (xVel == -1 && yVel == -1) {
-			arm.transform.rotation = Quaternion.Euler (0, 0, 225);
-
-		}
-
-		// straight down
-		if (xVel == 0 && yVel == -1) {
-			Debug.Log ("aim down");
-			arm.transform.rotation = Quaternion.Euler (0, 0, 270);
-
-		}
-
-		// down and forward
-		if (xVel == 1 && yVel == -1) {
-			arm.transform.rotation = Quaternion.Euler (0, 0, 315);
-
-		}
-
+			
 		// Inactive
 		if (xVel == 0 && yVel == 0) {
 			arm.SetActive (false);

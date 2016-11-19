@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class armController : MonoBehaviour {
+public class gunController : MonoBehaviour {
+	public testFireController fireController;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -12,7 +14,5 @@ public class armController : MonoBehaviour {
 	
 	}
 
-	void rotate(){
-		
-	}
+
 }
