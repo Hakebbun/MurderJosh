@@ -48,9 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Land Idle");
             animator.SetTrigger("landIdle");
-
         }
-
 
         wallL = Physics2D.Linecast(transform.position, wallCheckL.position, 1 << LayerMask.NameToLayer("Ground"));
         wallR = Physics2D.Linecast(transform.position, wallCheckR.position, 1 << LayerMask.NameToLayer("Ground"));
@@ -83,6 +81,11 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+
+        if (Input.GetAxis("Horizontal") == 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+        {
+            animator.SetTrigger("stopWalking");
+        }
     }
 
     void FixedUpdate()
@@ -104,7 +107,7 @@ public class PlayerController : MonoBehaviour
 		}
         else if (grounded && animator.GetCurrentAnimatorStateInfo(0).IsName("Land") || animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
         {
-            animator.SetTrigger("stopWalking");
+            //animator.SetTrigger("stopWalking");
         }
 
 		//only play walk animation if arrow is being pressed and character is on ground
