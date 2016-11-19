@@ -55,7 +55,7 @@ public class testFireController : MonoBehaviour {
 
 
 
-		if (Input.GetButtonDown("CustomFire")) {
+		if (Input.GetButtonDown("CustomFire") && !(yVel == 0 && xVel == 0)) {
 			bulletController curGO = (bulletController)Instantiate (bullet, new Vector3 (0, 0, -0.1f), Quaternion.identity);
 			curGO.GetComponent<Rigidbody2D> ().velocity = new Vector2 (xVel, yVel);
 			Debug.Log ("Cur Dir =" + xVel + "," + yVel);
