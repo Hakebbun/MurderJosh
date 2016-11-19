@@ -6,6 +6,7 @@ public class testFireController : MonoBehaviour {
 	public float bulletsInPlay = 0;
 	public List<bulletController> bullets = new List<bulletController>();
 	public GameObject player;
+	public GameObject arm;
 
 
 	public bulletController bullet;
@@ -25,18 +26,24 @@ public class testFireController : MonoBehaviour {
 
 
 		if(Input.GetButton("AimUp")){
+			arm.SetActive (true);
+
 			yVel = 1f;
 		}
 
 		if(Input.GetButton("AimRight")){
+			arm.SetActive (true);
 			xVel = 1f;
+
 		}
 
 		if(Input.GetButton("AimDown")){
+			arm.SetActive (true);
 			yVel = -1f;
 		}
 
 		if(Input.GetButton("AimLeft")){
+			arm.SetActive (true);
 			xVel = -1f;
 		}
 
@@ -73,6 +80,62 @@ public class testFireController : MonoBehaviour {
 			slowDown();
 		}else if(Input.GetButtonUp("SlowDown")){
 			endSlowDown();
+		}
+
+
+		// angle check for rotating gun
+
+		// straight
+		if (xVel == 1 && yVel == 0) {
+			arm.transform.rotation = Quaternion.Euler (0, 0, 0);
+		}
+
+		// up and right
+		if (xVel == 1 && yVel == 1) {
+			arm.transform.rotation = Quaternion.Euler (0, 0, 45);
+
+		}
+
+		// straight up
+		if (xVel == 0 && yVel == 1) {
+			arm.transform.rotation = Quaternion.Euler (0, 0, 90);
+
+		}
+
+		// up and back
+		if (xVel == -1 && yVel == 1) {
+			arm.transform.rotation = Quaternion.Euler (0, 0, 135);
+
+		}
+
+		// straight back
+		if (xVel == -1 && yVel == 0) {
+			arm.transform.rotation = Quaternion.Euler (0, 0, 180);
+
+		}
+
+		// down and back
+		if (xVel == -1 && yVel == -1) {
+			arm.transform.rotation = Quaternion.Euler (0, 0, 225);
+
+		}
+
+		// straight down
+		if (xVel == 0 && yVel == -1) {
+			arm.transform.rotation = Quaternion.Euler (0, 0, 270);
+
+		}
+
+		// down and forward
+		if (xVel == 0 && yVel == -1) {
+			arm.transform.rotation = Quaternion.Euler (0, 0, 315);
+
+		}
+
+		// Inactive
+		if (xVel == 0 && yVel == 0) {
+			arm.SetActive (false);
+
 		}
 
 	}
