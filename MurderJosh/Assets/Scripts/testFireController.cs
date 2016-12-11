@@ -9,7 +9,7 @@ public class testFireController : MonoBehaviour {
 	public GameObject arm;
 	public GameObject gun;
     public SpriteRenderer gunSprite;
-	public PlayerController playerController;
+	public PlayerModel mPlayerModel;
 	public GameController gameController;
 	public float reload = 0f;
 
@@ -44,7 +44,7 @@ public class testFireController : MonoBehaviour {
 			yVel = 1f;
 		}
 
-		if((Input.GetAxis("AimHorizontal") > 0) && !playerController.wallR){
+		if((Input.GetAxis("AimHorizontal") > 0) && !mPlayerModel.wallR){
 			arm.SetActive (true);
 			xVel = 1f;
 
@@ -57,8 +57,8 @@ public class testFireController : MonoBehaviour {
 			yVel = -1f;
 		}
         
-		//if(Input.GetButton("AimLeft") && !playerController.wallL){
-		if((Input.GetAxis("AimHorizontal") < 0) && !playerController.wallL){
+		//if(Input.GetButton("AimLeft") && !mPlayerModel.wallL){
+		if((Input.GetAxis("AimHorizontal") < 0) && !mPlayerModel.wallL){
 			arm.SetActive (true);
 			xVel = -1f;
 		}

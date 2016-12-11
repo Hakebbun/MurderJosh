@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
 	private float scoreMultiplier;
 	private bool gameOver;											
 	private bool restart;
-	public PlayerController player;
+	public PlayerController mPlayerController;
 	public testFireController tfc;
 
 	public Text scoreText;
@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour {
 		if (gameOver) {
 			restartText.text = "Press 'R' to Restart";
 			restart = true;
-			player.enabled = false;
+			mPlayerController.disablePlayers();
 			tfc.enabled = false;
 		}
 		if (restart) {
@@ -89,7 +89,6 @@ public class GameController : MonoBehaviour {
 
 	// Updates the reload timer
 	public void updateReload(float count){
-		Debug.Log ("reload: " + count);
 		reloadCounter.text = "Reload in: " + count.ToString("0");
 	}
 

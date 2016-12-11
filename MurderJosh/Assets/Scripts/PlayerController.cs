@@ -1,151 +1,121 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class PlayerController : MonoBehaviour
 {
+	public List<PlayerModel> mPlayers = new List<PlayerModel>();
+	public GameController mGameController;
 	private float lockPos = 0;
-    public float movementSpeed;                         //Speed at which player should travel
-    public float jumpSpeed;                             //Speed at which player should jump
-    public float maxSpeed = 5f;                         //max speed player can move
     [HideInInspector]
-    public bool jump = false;
-    public bool walljumpL = false;
-    public bool walljumpR = false;
-    public Transform groundCheck;                       //used to check if player is on the ground
 
-    public Transform wallCheckL;
-    public Transform wallCheckR;
 
-	public GameController instance;
 
-    private Animator animator;                          //Used to store reference to player's animator component
+	public void startup(PlayerModel playerModel, GameObject curObj){
+		curObj.GetComponent<SpriteRenderer> ().flipX = false;
+		playerModel.score = 0;
+		mPlayers.Add (playerModel);
+	}
 
-    private Rigidbody2D rb2D;
-    private SpriteRenderer sprite;
-    private int score;                          //How many coins player has picked up
-    private bool grounded;                      //is the player on the ground?
-    public bool wallL;                      //is the player on the ground?
-    public bool wallR;                      //is the player on the ground?
+	public void checkState(PlayerModel playerModel, GameObject curObj){
+		bool wasGrounded = playerModel.grounded;
+		playerModel.grounded = Physics2D.Linecast (curObj.transform.position, playerModel.groundCheck.position, 1 << LayerMask.NameToLayer (Globals.LAYER_NAME_GROUND));
 
-    // Use this for initialization
-    void Start()
-    {
-        rb2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        sprite = GetComponent<SpriteRenderer>();
+		Animator curAnimator = curObj.GetComponent<Animator> ();
 
-        score = 0;
-        sprite.flipX = false;                       //player should start facing right
-    }
+		// if we just landed, play
+		if (!wasGrounded && playerModel.grounded && curAnimator.GetCurrentAnimatorStateInfo (0).IsName (Globals.ANIM_NAME_FLOATD)) {
+			curAnimator.SetTrigger (Globals.ANIM_TRIGGER_LAND_IDLE);
+		}
 
-    void Update()
-    {
-        //Cast line down to see if player is touching the ground
-        bool groundedTemp = grounded;
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-        if(!groundedTemp && grounded && animator.GetCurrentAnimatorStateInfo(0).IsName("FloatDown"))
-        {
-            Debug.Log("Land Idle");
-            animator.SetTrigger("landIdle");
-        }
-
-        wallL = Physics2D.Linecast(transform.position, wallCheckL.position, 1 << LayerMask.NameToLayer("Ground"));
-        wallR = Physics2D.Linecast(transform.position, wallCheckR.position, 1 << LayerMask.NameToLayer("Ground"));
+		playerModel.wallL = Physics2D.Linecast(curObj.transform.position, playerModel.wallCheckL.position, 1 << LayerMask.NameToLayer("Ground"));
+		playerModel.wallR = Physics2D.Linecast(curObj.transform.position, playerModel.wallCheckR.position, 1 << LayerMask.NameToLayer("Ground"));
 
 		// Lock rotation
-		transform.rotation = Quaternion.Euler(lockPos, lockPos, lockPos);
+		curObj.transform.rotation = Quaternion.Euler(lockPos, lockPos, lockPos);
 
 
-        if (Input.GetButtonDown("Jump"))
-        {
+	}
 
-            if (grounded)
-            {
-                jump = true;
-                animator.SetTrigger("jumpIdle");
-
-            }
-            else if (wallR)
-            {
-                Debug.Log("WALL Right");
-                walljumpR = true;
-                animator.SetTrigger("jumpIdle");
-
-            }
-            else if (wallL)
-            {
-                Debug.Log("WALL Left");
-                walljumpL = true;
-                animator.SetTrigger("jumpIdle");
-
-            }
-        }
-
-        if (Input.GetAxis("Horizontal") == 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
-        {
-            animator.SetTrigger("stopWalking");
-        }
-    }
-
-    void FixedUpdate()
-    {
-		float moveHorizontal = Input.GetAxis("Horizontal");
-        Vector2 movement = new Vector2((moveHorizontal * movementSpeed), rb2D.velocity.y);
-        rb2D.velocity = movement;
-
-        Vector2 realMovement = rb2D.transform.InverseTransformDirection(rb2D.velocity);
-
-        //character facing right
-        if (movement.x > 0)
+	public void onJumpPressed(PlayerModel playerModel, GameObject gameObject){
+		if (playerModel.grounded)
 		{
-			sprite.flipX = false;
+			playerModel.jump = true;
+			gameObject.GetComponent<Animator>().SetTrigger(Globals.ANIM_TRIGGER_JUMP_IDLE);
+
 		}
-		else if (movement.x < 0)//character facing left
-        {
-			sprite.flipX = true;
+		else if (playerModel.wallR)
+		{
+			playerModel.walljumpR = true;
+			gameObject.GetComponent<Animator>().SetTrigger(Globals.ANIM_TRIGGER_JUMP_IDLE);
+
 		}
-        else if (grounded && animator.GetCurrentAnimatorStateInfo(0).IsName("Land") || animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
-        {
-            //animator.SetTrigger("stopWalking");
-        }
+		else if (playerModel.wallL)
+		{
+			playerModel.walljumpL = true;
+			gameObject.GetComponent<Animator>().SetTrigger(Globals.ANIM_TRIGGER_JUMP_IDLE);
 
-		//only play walk animation if arrow is being pressed and character is on ground
-		if (moveHorizontal != 0 && grounded && !jump)
-			animator.SetTrigger ("walk");
-        
-        
-
-		//If the dude is falling
-		if (!grounded && realMovement.y < 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("FloatUp"))
-        {
-			animator.SetTrigger ("floatDown");
 		}
-        else if (grounded && jump)
-        {
-            rb2D.AddForce(new Vector2(0f, jumpSpeed));
-            jump = false;
-        }
-        else if (walljumpL)
-        {
-            movement = new Vector2(0, 0);
-            rb2D.velocity = movement;
-            rb2D.AddForce(new Vector2(jumpSpeed, jumpSpeed));
-            walljumpL = false;
-        }
-        else if (walljumpR)
-        {
-            movement = new Vector2(0, 0);
-            rb2D.velocity = movement;
-            rb2D.AddForce(new Vector2(-jumpSpeed, jumpSpeed));
-            walljumpR = false;
-        }
+	}
 
-    }
+	public void onHAxis(PlayerModel playerModel, GameObject gameObject){
+		gameObject.GetComponent<Animator>().SetTrigger(Globals.ANIM_TRIGGER_STOP_WALKING);
+	}
+		
+	public void checkPhysicsState(PlayerModel playerModel, GameObject gameObject){
+	// EMPTY
 
-	void OnCollisionEnter2D(Collision2D collision){
-		if (collision.collider.CompareTag ("bullet")) {
-			instance.GameOver ();
+	}
+
+	public void onFaceRight(PlayerModel playerModel, GameObject gameObject){
+		gameObject.GetComponent<SpriteRenderer>().flipX = false;
+
+	}
+
+	public void onFaceLeft(PlayerModel playerModel, GameObject gameObject){
+		gameObject.GetComponent<SpriteRenderer>().flipX = true;
+
+	}
+
+	public void onWalk(PlayerModel playerModel, GameObject gameObject){
+		gameObject.GetComponent<Animator>().SetTrigger (Globals.ANIM_TRIGGER_WALK);
+
+	}
+
+	public void onFalling(PlayerModel playerModel, GameObject gameObject){
+		gameObject.GetComponent<Animator>().SetTrigger ("floatDown");
+
+	}
+
+	public void onJump(PlayerModel playerModel, GameObject gameObject){
+		gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, playerModel.jumpSpeed));
+		playerModel.jump = false;
+	}
+
+	public void onWallJumpL(PlayerModel playerModel, GameObject gameObject){
+		Vector2 newMovement = new Vector2(0, 0);
+		gameObject.GetComponent<Rigidbody2D>().velocity = newMovement;
+		gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(playerModel.jumpSpeed, playerModel.jumpSpeed));
+		playerModel.walljumpL = false;
+	}
+
+	public void onWallJumpR(PlayerModel playerModel, GameObject gameObject){
+		Vector2 newMovement = new Vector2(0, 0);
+		gameObject.GetComponent<Rigidbody2D>().velocity = newMovement;
+		gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-playerModel.jumpSpeed, playerModel.jumpSpeed));
+		playerModel.walljumpR = false;
+	}
+		
+
+	public void onBulletCollision(PlayerModel playerModel, GameObject gameObject){
+		mGameController.GameOver ();
+	}
+		
+
+	public void disablePlayers(){
+		foreach(PlayerModel pm in mPlayers){
+			pm.enabled = false;
 		}
 	}
 
